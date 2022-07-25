@@ -154,11 +154,6 @@ a {
     text-decoration: none;
 }
 
-.container {
-    max-width: 100%;
-    margin: 0 auto;
-}
-
 header {
     background: #AA0601;
     display: flex;
