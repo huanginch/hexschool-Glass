@@ -462,12 +462,17 @@ footer a:hover {
     max-width: 1200px;
     margin: 0 auto;
     text-align: center;
+    padding: 0 12px;
 }
 
 .product h1 {
-    line-height: 1;
-    font-size: 1.3125em;
+    line-height: 63px;
+    font-size: 42px;
     font-style: Medium;
+}
+
+.product h2 {
+    margin-bottom: 32px;
 }
 
 .product__list {
@@ -475,23 +480,25 @@ footer a:hover {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    margin: 0 -12px;
 }
 
 .product__list>li {
-    width: 32%;
+    width: 33.333%;
     height: auto;
     margin-bottom: 80px;
+    padding: 0 12px;
 }
 
 @media(max-width: 992px) {
     .product__list>li {
-        width: 48%;
+        width: 50%;
         height: auto;
         margin-bottom: 56px;
     }
 
     .product h1, h2 {
-       line-height: 1.5;
+       line-height: 36px;
        font-size: 24px;
        font-style: Medium;
     }
@@ -501,7 +508,6 @@ footer a:hover {
     .product__list>li {
         width: 100%;
         height: auto;
-        padding: 0 15px;
         margin-bottom: 48px;
     }
 }
