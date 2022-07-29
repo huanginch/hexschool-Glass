@@ -140,12 +140,6 @@ table {
     box-sizing: border-box;
 }
 
-body {
-    line-height: 48px;
-    font-size: 32px;
-    font-family: "Noto Sans TC", Roboto, sans-serif;
-}
-
 img {
     vertical-align: middle;
 }
@@ -154,23 +148,45 @@ a {
     text-decoration: none;
 }
 
-header {
-    background: #AA0601;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding-top: 12px;
+/* CSS RESET END */
+
+body {
+    line-height: 24px;
+    font-size: 16px;
+    font-family: Roboto, "Noto Sans TC", sans-serif;
 }
 
-/* @media(max-width: 992px) {
-    header {
-        flex-direction: column;
-    }
-} */
+.mb-8 {
+    margin-bottom: 8px;
+}
+
+.pr-20 {
+    padding-right: 20px;
+}
+
+.text-Noto {
+    font-family: "Noto Sans TC";
+}
+
+header {
+    background: #AA0601;
+    padding: 0 12px;
+}
+
+.header-container {
+    max-width: 1296px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
 header img {
     width: 80px;
-    padding: 12px 0;
+    height: 72px;
+    margin: 4px 0;
+    object-fit: contain;
+    padding-left: 12px;
 }
 
 header .navbar {
@@ -178,46 +194,58 @@ header .navbar {
     flex-wrap: wrap;
 }
 
-header .navbar a{
-    color: white;
+header .navbar li a {
+    color: #fff;
     display: block;
     text-align: center;
+    padding: 25px 32px;
     line-height: 30px;
     font-size: 20px;
-    padding: 0 32px;
 }
 
-header .navbar a:hover,
-header .navbar a:focus{
+header .navbar li a:hover,
+header .navbar li a:focus {
     opacity: 0.5;
 }
 
 header .menu-btn {
+    color: #fff;
     display: none;
-    color: white;
     font-size: 30px;
 }
 
-/* ipad */
-@media all and (max-width: 992px) {
-    .navbar{
+@media (max-width: 992px) {
+    header {
+        position: relative;
+    }
+
+    .header-container {
+        max-width: 534px;
+    }
+
+    .navbar {
+        width: 100%;
+        max-height: 0px;
         display: none;
         position: absolute;
+        bottom: 0;
+        left: 0;
         padding: 0;
-        flex-direction: row;
         transform: translateY(100%);
         background: #AA0601;
-        height: 0px;
         overflow: hidden;
-        transition: all .3s;
-        /* width: 50%;
-        margin: 0 auto 0px auto;
-        border: 1px #fff solid; */
+        transition: max-height 0.7s;
     }
 
     .navbar li {
         width: 50%;
         border: 1px solid #fff;
+    }
+
+    header .navbar li a {
+        display: block;
+        padding: 12px 62px;
+        transition: all 0.3s;
     }
 
     .navbar a:hover,
@@ -226,25 +254,27 @@ header .menu-btn {
         color: white;
     }
 
-    .navbar.show {
-        width: 100%;
-        height: auto;
-        transition: all .3s;
+    .show {
+        max-height: 136px;
         text-align: center;
     }
 
     header .menu-btn {
         display: flex;
-        color: white;
-        font-size: 30px;
     }
+    
+}
 
+@media (max-width: 767px) {
+    .header-container {
+        max-width: 348px;
+    }
 }
 
 footer {
     background: #AA0601;
     color: white;
-    padding-top: 48px;
+    padding: 48px 12px 0 12px;
 }
 
 footer a {
@@ -254,18 +284,18 @@ footer a {
 footer a:hover {
     opacity: 0.5;
 }
-    
 
-.contact  {
-    max-width: 1200px;
+
+.contact {
+    max-width: 1296px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
-    align-items: start;
+    align-items: flex-start;
     border-bottom: 1px solid #fff;
     padding-bottom: 32px;
     margin-bottom: 32px;
-} 
+}
 
 .contact .social {
     display: flex;
@@ -295,15 +325,19 @@ footer a:hover {
     font-size: 36px;
 }
 
-/* ipad */
-@media(max-width: 992px) {
+.contact__mail a,
+.contact__phone a {
+    font-family: "Noto Sans TC";
+}
+
+/* phone */
+@media(max-width: 767px) {
     .contact {
-        align-items: center;
         max-width: 348px;
     }
 
-    .contact__navbar{
-        visibility: hidden;
+    .contact__navbar {
+        display: none;
     }
 
     .contact .social img {
@@ -315,14 +349,17 @@ footer a:hover {
     }
 
     .contact__phone a,
-    .contact__mail a {
+    .contact__mail a,
+    .contact__phone span,
+    .contact__mail span {
         line-height: 24px;
         font-size: 16px;
     }
 }
 
+
 .copyright {
-    max-width: 1200px;
+    max-width: 1296px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -349,8 +386,8 @@ footer a:hover {
     margin-right: 48px;
 }
 
-/* ipad */
-@media(max-width: 992px) {
+/* phone */
+@media(max-width: 767px) {
     .copyright {
         text-align: left;
         max-width: 348px;
@@ -365,218 +402,420 @@ footer a:hover {
     }
 }
 
-
 /* body content */
 
-.menu {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.menu li {
-    width: 33.333%;
-}
-
-.menu li a {
-    color: #000000;
-    line-height: 1em;
-    font-size: 1em;
-    padding: 0 20%;
-}
-
-.center {
-    border-left: 1px solid #DCDCDC;
-    border-right: 1px solid #DCDCDC;
-    border-bottom: 8px solid #AA0601;
-}
-
-.menu li:hover,
-.menu li:focus {
-    border-left: 1px solid #DCDCDC;
-    border-right: 1px solid #DCDCDC;
-    border-bottom: 8px solid #AA0601;
-}
-
-@media(max-width: 992px) {
-    .menu li a {
-        line-height: 0.75em;
-        font-size: 0.5em;
-    }
-}
-
 .banner {
+    background: url("./images/home-header.png") no-repeat;
+    width: 100%;
+    height: 787px;
+    background-size: cover;
+    background-position: center;
+    color: #650300;
+    padding: 0 12px;
+}
+
+.banner h1 {
+    line-height: 96px;
+    font-size: 64px;
+    font-weight: bold;
+}
+
+.banner h2 {
+    line-height: 54px;
+    font-size: 36px;
+}
+
+.banner button {
+    line-height: 30px;
+    font-size: 20px;
+    border: none;
+    background-color: #AA0601;
+    color: #fff;
+    padding: 6px 12px;
+}
+
+.banner-title {
+    max-width: 1296px;
+    margin: 0 auto;
+    text-align: right;
     display: flex;
-    margin-bottom: 80px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    padding-top: 296px;
 }
 
-.banner li {
-    width: 100%;
-    height: 100%;
-}
-
-.banner-l {
-    width: 100%;
-    height: 10em;
-    background: url(./images/product-header-3.png) center no-repeat;
-    background-size: cover;
-}
-
-.banner-r {
-    width: 100%;
-    height: 10em;
-    background: url(./images/product-header-4.png) center no-repeat;
-    background-size: cover;
-}
-
-/* pad */
-@media (max-width: 992px) {
+@media (max-width: 992px){
     .banner {
-        margin-bottom: 40px;
+        background: url("./images/home-header-sm.png") no-repeat;
+        width: 100%;
+        height: 396px;
+        background-size: cover;
+        background-position: center;
+        color: #650300;
     }
 
-    .banner-l {
-        height: 8em;
+    .banner h1 {
+        line-height: 36px;
+        font-size: 24px;
     }
 
-    .banner-r {
-        height: 8em;
+    .banner h2 {
+        line-height: 24px;
+        font-size: 16px;
+    }
+
+    .banner-title {
+        padding-top: 144px;
     }
 }
 
-/* mobile */
-@media (max-width: 767px) {
-    .banner-l {
-        background: url(./images/product-header-sm-3.png);
-    }
-
-    .banner-r {
-        background: url(./images/product-header-sm-4.png);
-    }
+.intro {
+    background: #FBF2F2;
 }
 
-.product {
-    max-width: 1200px;
+.intro-content {
+    max-width: 1296px;
     margin: 0 auto;
     text-align: center;
     padding: 0 12px;
 }
 
-.product h1 {
-    line-height: 63px;
-    font-size: 42px;
-    font-style: Medium;
+.intro-content h2 {
+    color: #650300;
+    line-height: 72px;
+    font-size: 48px;
+    font-weight: bold;
+    padding: 80px 0 24px 0;
 }
 
-.product h2 {
-    margin-bottom: 32px;
-}
-
-.product__list {
+.intro-cards {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center;
+    align-items: baseline;
+    padding-bottom: 80px;
     margin: 0 -12px;
 }
 
-.product__list>li {
-    width: 33.333%;
-    height: auto;
-    margin-bottom: 80px;
+.intro-cards li {
     padding: 0 12px;
 }
 
-@media(max-width: 992px) {
-    .product__list>li {
-        width: 50%;
-        height: auto;
-        margin-bottom: 56px;
+.intro-cards li img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 16px;
+}
+
+.intro-cards h3 {
+    color: #650300;
+    line-height: 36px;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.intro-cards p {
+    text-align: left;
+    max-width: 306px;
+}
+
+@media (max-width: 992px) {
+    .intro-cards {
+        flex-wrap: wrap;
     }
 
-    .product h1, h2 {
-       line-height: 36px;
-       font-size: 24px;
-       font-style: Medium;
+    .intro-content h2 {
+        line-height: 48px;
+        font-size: 36px;
     }
 }
 
-@media(max-width: 767px) {
-    .product__list>li {
-        width: 100%;
-        height: auto;
-        margin-bottom: 48px;
+@media (max-width: 767px) {
+    .intro-content h2 {
+        line-height: 36px;
+        font-size: 24px;
     }
 }
 
-.product__list img {
+.classic {
+    max-width: 1296px;
+    margin: 0 auto;
+    color: #650300;
+    text-align: center;
+    padding:0 12px;
+}
+
+.classic ul {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 -12px 80px -12px;
+}
+
+.classic ul li {
+    padding: 0 12px;
+}
+
+.classic h2 {
+    line-height: 72px;
+    font-size: 48px;
+    margin: 80px 0 48px 0;
+    font-weight: bold;
+}
+
+.classic img {
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.classic h3 {
+    color: #AA0601;
+    line-height: 72px;
+    font-size: 48px;
+    font-style: italic;
+    font-weight: bold;
+}
+
+@media (max-width: 992px) {
+    .classic ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .classic h2 {
+        line-height: 48px;
+        font-size: 36px;
+    }
+}
+
+@media (max-width: 767px) {
+    .classic h2 {
+        line-height: 36px;
+        font-size: 24px;
+    }
+}
+
+.co-branding {
+    background: url("./images/index-bg.png") no-repeat;
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    padding: 0 12px;
+}
+
+.co-branding-container {
+    max-width: 1296px;
+    margin: 0 auto;
+}
+
+.co-branding h2 {
+    color: #fff;
+    line-height: 72px;
+    font-size: 48px;
+    padding: 80px 0 48px 0;
+    font-weight: bold;
+}
+
+.co-branding ul {
+    margin: 0 -12px;
+    display: flex;
+    padding: 0 12px;
+}
+
+.co-branding ul img {
     width: 100%;
 }
 
-.product__details {
-    max-width: 100%;
-    display: flex;
-    justify-content: space-between;
-}
-
-.product__details h3 {
-    line-height: 36px;
-    font-size: 24px;
-}
-
-.product__price {
+.co-branding ul h3 {
     color: #AA0601;
-    font-style: Medium;
-}
-
-.color {
-    display: flex;
-}
-
-.block1 {
-    width: 24px;
-    height: 24px;
-    background-color: #5F3E2D;
-    margin-right: 8px;
-    border-radius: 4px;
-}
-
-.block2 {
-    width: 24px;
-    height: 24px;
-    background-color: #B75929;
-    border-radius: 4px;
-}
-
-.pages {
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
+    background: #fff;
+    font-weight: bold;
+    font-style: italic;
+    line-height: 72px;
+    font-size: 48px;
+    padding: 8px 0;
     margin-bottom: 80px;
 }
 
-.pages li {
-    border: 1px solid #555555;
+@media (max-width: 992px) {
+    .co-branding {
+        background: url("./images/index-bg-md.png");
+    }
+
+    .co-branding ul {
+        flex-wrap: wrap;
+    }
+
+    .co-branding h2 {
+        line-height: 48px;
+        font-size: 36px;
+    }
 }
 
-.pages a {
-    display: block;
-    color: #555555;
-    line-height: 29px;
-    font-size: 19px;
-    padding: 12px 16px;
+@media (max-width: 767px) {
+    .co-branding {
+        background: url("./images/index-bg-sm.png");
+    }
+
+    .co-branding h2 {
+        line-height: 36px;
+        font-size: 24px;
+    }
 }
 
-.pages a:hover,
-.pages a:focus {
-    opacity: 0.5;
+.recommand-container {
+    max-width: 1296px;
+    margin: 0 auto;
+    padding: 0 12px;
+    text-align: center;
 }
 
-.active a{
+.recommand h2 {
+    line-height: 72px;
+    font-size: 48px;
+    color: #650300;
+    font-weight: bold;
+    padding: 80px 0 48px 0;
+}
+
+.recommand ul {
+    display: flex;
+    margin: 0 -12px;
+}
+
+.recommand ul img {
+    width: 100%;
+}
+
+.recommand ul li {
+    margin: 0 12px;
+    text-align: left;
+    margin-bottom: 80px;
+    box-shadow: 0px 2px 6px 0px #DEE2E6;
+
+}
+
+.recommand .name {
+    margin: 16px 0 8px 16px;
+}
+
+.recommand .comment {
+   margin: 0 0 48px 16px;
+}
+
+.recommand .date {
+    color: #707070;
+    padding-bottom: 16px;
+    margin-left: 16px;
+}
+
+
+@media (max-width: 992px) {
+    .recommand ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .recommand h2 {
+        line-height: 48px;
+        font-size: 36px;
+    }
+}
+
+@media (max-width: 767px) {
+    .recommand h2 {
+        line-height: 36px;
+        font-size: 24px;
+    }
+}
+
+.contact-us {
+    background: #FBF2F2;
+}
+
+.contact-us-container {
+    max-width: 636px;
+    margin: 0 auto;
+    padding: 0 12px;
+    text-align: center;
+}
+
+.contact-us h2 {
+    line-height: 72px;
+    font-size: 48px;
+    color: #650300;
+    font-weight: bold;
+    padding: 80px 12px 48px 12px;
+    margin: 0 -12px;
+}
+
+.contact-us p {
+    line-height: 30px;
+    font-size: 20px;
+    margin: 0 -12px 24px -12px;
+    padding: 0 12px;
+    text-align: left;
+}
+
+.contact-us form {
+   text-align: left;
+   padding:0 12px 80px 12px;
+   margin: 0 -12px;
+}
+
+.contact-us input,
+.contact-us textarea {
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.contact-us .agree {
+    width: auto;
+    margin-bottom: 0px;
+}
+
+.contact-us button {
+    display: inline-block;
+    background: #AA0601;
     color: #fff;
-    background: #000;
+    padding: 12px 176px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.contact-us .center {
+    margin-top: 48px;
+    text-align: center;
+}
+
+@media (max-width: 992px) {
+    .contact-us h2 {
+        line-height: 48px;
+        font-size: 36px;
+    }
+
+    .contact-us .center {
+        margin-top: 36px;
+    }
+
+    .contact-us button {
+        padding: 12px 142px;
+    }
+}
+
+@media (max-width: 767px) {
+    .contact-us h2 {
+        line-height: 36px;
+        font-size: 24px;
+    }
+
+    .contact-us p {
+        line-height: 24px;
+        font-size: 16px;
+    }
+
+    .contact-us .center {
+        margin-top: 24px;
+    }
 }
